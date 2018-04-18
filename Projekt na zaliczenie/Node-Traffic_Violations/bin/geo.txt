@@ -1,0 +1,14 @@
+﻿db.tickets.find().forEach(function (item) {
+    location = {type: "Point", coordinates: [item.Latitude, item.Longitude]}
+    item.location = location 
+    db.tickets.save(item)
+})
+
+db.tickets.createIndex( { loc: "2dsphere" } )
+
+db.tickets.remove({Longitude:""})
+
+
+db.tickets.find( { location: { $near: { $geometry: { type: "Point", coordinates: [-77.213755, 39.1091166666667]}, $minDistance: 2000 } } })
+
+db.collection.tickets.updateMany( {}, { $rename: { "Date Of Stop": "Date_of_stop" } } );
