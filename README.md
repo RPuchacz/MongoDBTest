@@ -1,5 +1,3 @@
-## Jakub Puchalski
-
 ### Projekty:
 
 - [Moje dane](/Moje%20dane)
